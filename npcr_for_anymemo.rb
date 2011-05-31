@@ -1,3 +1,6 @@
+#!/usr/bin/env ruby -w
+# encoding: UTF-8
+
 require "rubygems"
 require "bundler/setup"
 
@@ -36,7 +39,7 @@ end.each_pair do |lesson_num, lesson|
     answer   = "#{word[:zh_pinyin]}" #\n\n#{word[:zh_hans]}
     note     = ""
     category = "Lesson #{sprintf('%02d', lesson_num)}"
-    db.execute "INSERT INTO 'dict_tbl' VALUES(NULL,?,?,?,?);", "question", "answer" #, note, category
+    db.execute "INSERT INTO 'dict_tbl' VALUES(NULL,?,?,?,?);", ["good; well; fine; O.K.", "hǎo"] #, note, category
   end
   puts " done!"
 end
