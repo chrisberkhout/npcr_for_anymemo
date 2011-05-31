@@ -9,7 +9,7 @@ require "sqlite3"
 
 FileUtils.mkdir_p "output"
 
-CSV.read("hskflashcards.com_npcr.csv").map do |row|
+CSV.read("hskflashcards.com_npcr.csv", encoding: "UTF-8").map do |row|
   Hash[[:lesson_num, :lesson_word_num, :zh_hant, :zh_hans, :zh_pinyin, :en, :kind].zip(row)]
 end.each_with_index do |word, index|
   word[:word_num] = index + 1
@@ -35,11 +35,11 @@ end.each_pair do |lesson_num, lesson|
   db.execute "CREATE TABLE learn_tbl(_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, date_learn, interval INTEGER, grade INTEGER, easiness REAL, acq_reps INTEGER, ret_reps INTEGER, lapses INTEGER, acq_reps_since_lapse INTEGER, ret_reps_since_lapse INTEGER);"
   lesson.each do |word|
     print "."
-    question = "#{word[:en]}\n\n(#{word[:kind]})"
-    answer   = "#{word[:zh_pinyin]}" #\n\n#{word[:zh_hans]}
-    note     = ""
-    category = "Lesson #{sprintf('%02d', lesson_num)}"
-    db.execute "INSERT INTO 'dict_tbl' VALUES(NULL,?,?,?,?);", ["good; well; fine; O.K.", "hǎo"] #, note, category
+    question = word[:en] #"#{word[:en]}" #\n\n(#{word[:kind]})
+    answer   = word[:zh_pinyin] #"#{word[:zh_pinyin]}" #\n\n#{word[:zh_hans]}
+    note     = nil
+    category = nil # "Lesson #{sprintf('%02d', lesson_num)}"
+    db.execute "INSERT INTO 'dict_tbl' VALUES(NULL,?,?,?,?);", [question, answer, note, category]
   end
   puts " done!"
 end
