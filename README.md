@@ -1,24 +1,22 @@
-# npcr\_for_anymemo
-
-New Practical Chinese Reader vocabulary flashcards for AnyMemo
+# New Practical Chinese Reader vocabulary flashcards for AnyMemo
 
 ## Introduction
 
-(http://en.wikipedia.org/wiki/Practical_Chinese_Reader#New_Practical_Chinese_Reader)[New Practical Chinese Reader]
+[New Practical Chinese Reader](http://en.wikipedia.org/wiki/Practical_Chinese_Reader#New_Practical_Chinese_Reader)
 is a textbook for the Chinese language. 
-(http://anymemo.org/)[AnyMemo] is 
-(http://en.wikipedia.org/wiki/Spaced_repetition)[spaced repetition] 
+[AnyMemo](http://anymemo.org/) is 
+[spaced repetition](http://en.wikipedia.org/wiki/Spaced_repetition)
 flashcard software for Android.
 
 This script will produce an AnyMemo flashcard database for each lesson, with
 English (and word type) as the question and pinyin and simplified Chinese
-charaters as the answer.
+as the answer.
 
 The databases will be written to the `output` directory. Existing files will
 be overwritten.
 
 The included vocabularly list was downloaded from 
-(http://www.hskflashcards.com)[http://www.hskflashcards.com].
+[http://www.hskflashcards.com](http://www.hskflashcards.com).
 
 ## Run it
 
