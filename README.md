@@ -1,21 +1,21 @@
-# New Practical Chinese Reader vocabulary flashcards for AnyMemo
+# NPCR for AnyMemo
 
 ## Introduction
 
 [New Practical Chinese Reader](http://en.wikipedia.org/wiki/Practical_Chinese_Reader#New_Practical_Chinese_Reader)
-is a textbook for the Chinese language. 
+is a textbook for Chinese language learners.
 [AnyMemo](http://anymemo.org/) is 
 [spaced repetition](http://en.wikipedia.org/wiki/Spaced_repetition)
 flashcard software for Android.
 
-This script will produce an AnyMemo flashcard database for each lesson, with
-English (and word type) as the question and pinyin and simplified Chinese
-as the answer.
+This script will generate an AnyMemo flashcard database for each NPCR lesson,
+with English (and word type) as the question and pinyin and simplified Chinese
+characters as the answer.
 
 The databases will be written to the `output` directory. Existing files will
 be overwritten.
 
-The included vocabularly list was downloaded from 
+The included CSV format vocabularly list for NPCR was downloaded from 
 [http://www.hskflashcards.com](http://www.hskflashcards.com).
 
 ## Run it
@@ -31,7 +31,7 @@ It works. No further development is planned.
 
 ## Compatibility
 
-Written and tested with Ruby 1.9.2-p180.
+Written for Ruby 1.9.2-p180.
 
 ## Copyright
 
