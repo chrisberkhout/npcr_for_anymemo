@@ -15,9 +15,9 @@ end.each_with_index do |word, index|
   word[:word_num] = index + 1
 end.group_by do |word|
   word[:lesson_num]
-end.each_pair do |lesson_num, lesson|
+end.each_pair do |lesson_num, lesson_words|
   db_file = "output/npcr_#{sprintf('%02d', lesson_num)}.db"
-  print db_file[/output\/(.*)/, 1]
+  print db_file
   FileUtils.rm db_file, :force => true
   db = SQLite3::Database.new db_file
   db.execute "CREATE TABLE android_metadata(locale TEXT DEFAULT en_US);"
@@ -31,15 +31,16 @@ end.each_pair do |lesson_num, lesson|
   db.execute "INSERT INTO 'control_tbl' VALUES('answer_font_size','24');"
   db.execute "INSERT INTO 'control_tbl' VALUES('html_display','both');"
   db.execute "INSERT INTO 'control_tbl' VALUES('ratio','50%');"
-  db.execute "CREATE TABLE dict_tbl(_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, question TEXT, answer TEXT, note TEXT, category TEXT);"
   db.execute "CREATE TABLE learn_tbl(_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, date_learn, interval INTEGER, grade INTEGER, easiness REAL, acq_reps INTEGER, ret_reps INTEGER, lapses INTEGER, acq_reps_since_lapse INTEGER, ret_reps_since_lapse INTEGER);"
-  lesson.each do |word|
+  db.execute "CREATE TABLE dict_tbl(_id INTEGER PRIMARY KEY ASC AUTOINCREMENT, question TEXT, answer TEXT, note TEXT, category TEXT);"
+  lesson_words.each do |word|
     print "."
-    question = word[:en] #"#{word[:en]}" #\n\n(#{word[:kind]})
-    answer   = word[:zh_pinyin] #"#{word[:zh_pinyin]}" #\n\n#{word[:zh_hans]}
+    question = "#{word[:en]}<br/><br/>(#{word[:kind]})"
+    answer   = "#{word[:zh_pinyin]}<br/><br/>#{word[:zh_hans]}"
     note     = nil
-    category = nil # "Lesson #{sprintf('%02d', lesson_num)}"
+    category = "Lesson #{sprintf('%02d', lesson_num)}"
     db.execute "INSERT INTO 'dict_tbl' VALUES(NULL,?,?,?,?);", [question, answer, note, category]
   end
+  db.close
   puts " done!"
 end
