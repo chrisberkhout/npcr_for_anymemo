@@ -3,7 +3,7 @@
 ## Introduction
 
 [New Practical Chinese Reader](http://en.wikipedia.org/wiki/Practical_Chinese_Reader#New_Practical_Chinese_Reader)
-is a textbook for Chinese language learners.
+is a textbook for learners of Chinese language.
 [AnyMemo](http://anymemo.org/) is 
 [spaced repetition](http://en.wikipedia.org/wiki/Spaced_repetition)
 flashcard software for Android.
@@ -31,7 +31,7 @@ It works. No further development is planned.
 
 ## Compatibility
 
-Written for Ruby 1.9.2-p180.
+Developed with Ruby 1.9.2-p180.
 
 ## Copyright
 
